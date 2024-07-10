@@ -143,14 +143,16 @@
   /**
    * Slider
    */
-  var counter = 1;
-  setInterval(function(){
-    document.getElementById('radio' + counter).checked = true;
-    counter++;
-    if(counter > 3){
-      counter = 1;
-    }
-  }, 3000);
+  let currentIndex = 0;
+
+function showNextSlide() {
+    const slides = document.querySelector('.slides');
+    currentIndex = (currentIndex + 1) % 3;
+    const transformValue = -currentIndex * 100 + '%';
+    slides.style.transform = `translateX(${transformValue})`;
+}
+
+setInterval(showNextSlide, 3000); // Change image every 3 seconds
 
   /**
    * Preloader
